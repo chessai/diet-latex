@@ -1,0 +1,46 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Diets for Fat Structures}
+\author{Daniel Cartwright}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In this paper we describe two structures, implemented as {\textit{discrete interval encoding trees}}, for storing subsets of types having a total order and a predecessor and a successor function. In the following we consider for simplicity only the type of integers; the generalisation is not difficult. The original idea was discussed in [add citation to Erwig]. The differences between Erwig's presentation of this structure will be discussed below, after some initial review of the structure.
+\end{abstract} 
+
+\section{Introduction}
+The discrete interval encoding tree is based on the observation that the set of integers $\{ i | a \leq i \leq b \}$ can be perfectly represented by the closed interval $[a,b]$. The efficiency of the interval representation improves both spatially and temporally with the density of the set, that is, with the number of adjacencies between set elements. So what we propose is a "diet" (discrete interval encoding tree) for "fat" sets in the sense of "the same amount of information with less nodes." Note that the diet set can be thought of as a compactified (more space-efficient) example of the classical interval tree structure.
+
+\section{Differences between Erwig's presentation and what is provided here}
+\begin{enumerate}
+\item Erwig's implementation of diet sets did not require that the underlying set type was a commutative monoid under addition, whereas in our definition, it is required.
+\item Erwig's implementation focused solely on diet sets, that is, he did not touch on the notion of diet maps. A diet map is a dictionary structure, with keys as closed intervals over a totally ordered type with both a successor and predecessor function, and the values are in any type that forms a commutative monoid under addition.
+\item Erwig's implementation used a binary search tree as its underlying structure, which has the inherent limitation of expensive structural rebuilding upon the insertion of a sufficiently large interval. Here, we invent a new structure that is similar to but not quite a FingerTree[add citation to ross patterson], that avoids this problem.
+\item Erwig's implementation avoided the complications associated with the insertion of intervals, instead opting to just provide operations acting on a single element at a time. While these are far simpler to implement, they are not as generally useful in practise as operations on intervals in K.
+\end{enumerate}
+
+\section{}
+%\subsection{How to add Citations and a References List}
+
+%You can upload a \verb|.bib| file containing your BibTeX entries, created with JabRef; or import your \href{https://www.overleaf.com/blog/184}{Mendeley}, CiteULike or Zotero library as a \verb|.bib| file. You can then cite entries from it, like this: \cite{greenwade93}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|.
+
+%You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
